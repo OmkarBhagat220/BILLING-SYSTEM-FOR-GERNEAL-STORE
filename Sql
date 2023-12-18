@@ -1,0 +1,185 @@
+create database Billing_System;
+use Billing_System;
+create table CustomerDetails (Cus_ID int primary key, Cus_Name varchar(20), Cus_Address varchar(30), Cus_Mobile bigint unique );
+create table ProductDetails (Prod_ID int primary key, Prod_Name varchar(20) unique, Prod_Price int);
+create table BillDetails (BillID int Primary key,Cus_ID int,Prod_ID int,Prod_Name varchar(20),Prod_Price int,Prod_Quantity int,Total_Price int,Date_of_Purchase date,Payment varchar(20),FOREIGN KEY (Cus_ID) REFERENCES CustomerDetails(Cus_ID),FOREIGN KEY (Prod_ID) REFERENCES ProductDetails(Prod_ID));
+Drop table BillDetails;
+desc CustomerDetails;
+desc ProductDetails;
+desc BillDetails;
+insert into CustomerDetails values(1,'Omkar Bhagat','kharghar,Navi Mumbai',8451758543);
+insert into CustomerDetails values(2,'Harshal Rai','Panvel,Navi Mumbai',8451757243);
+insert into CustomerDetails values(3,'PRASAD CHITTE','Thane',9551758543);
+insert into CustomerDetails values(4,'AMONKAR SANTOSH','kharghar,Navi Mumbai',7851758543);
+insert into CustomerDetails values(5,'JADHAV','Kopar Khairane,Navi Mumbai',8458471256);
+insert into CustomerDetails values(6,'AAMAN KHAN','Kalyan',8451753215);
+insert into CustomerDetails values(7,'ANISH KULKARNI','Thane',8478165943);
+insert into CustomerDetails values(8,'NIHAR PHADNIS','Ambernath',9764628543);
+insert into CustomerDetails values(9,'CHARMIL SHAH','Mulund,Mumbai',8105298148);
+insert into CustomerDetails values(10,'ADITYA SHINDE','Borivali',8257231743);
+insert into CustomerDetails values(11,'AKSHAY SURVASE','Borivali',9465338543);
+insert into CustomerDetails values(12,'PRATHMESH YADAV','Thane',7863588543);
+insert into CustomerDetails values(13,'PRATHAMESH YEWALE','kharghar,Navi Mumbai',7919678543);
+insert into CustomerDetails values(14,'VAISHNAV PATIL','kharghar,Navi Mumbai',8451758545);
+
+insert into ProductDetails values(1,'Basmati rice',100);
+insert into ProductDetails values(2,'Maida',50);
+insert into ProductDetails values(3,'Besan',60);
+insert into ProductDetails values(4,'Tamarind',70);
+insert into ProductDetails values(5,'Red chilli',40);
+insert into ProductDetails values(6,'Idli, dosa batter',45);
+insert into ProductDetails values(7,'Bread packet',30);
+insert into ProductDetails values(8,'Coconut oil',120);
+insert into ProductDetails values(9,'Salt',35);
+insert into ProductDetails values(10,'Ghee or butter',150);
+insert into ProductDetails values(11,'Peanuts',80);
+insert into ProductDetails values(12,'Noodles',20);
+insert into ProductDetails values(13,'Pasta',45);
+insert into ProductDetails values(14,'Milk',58);
+insert into ProductDetails values(15,'Toothpaste',95);
+insert into ProductDetails values(16,'Dettol ',25);
+insert into ProductDetails values(17,'Matchbox',1);
+insert into ProductDetails values(18,'Batteries',28);
+insert into ProductDetails values(19,'Candles',5);
+insert into ProductDetails values(20,'Washing powder',55);
+insert into ProductDetails values(21,'Hand sanitizer',25);
+insert into ProductDetails values(22,'Face powder',35);
+insert into ProductDetails values(23,'Jam',45);
+insert into ProductDetails values(24,'Toor dal',40);
+insert into ProductDetails values(25,'Chana dal',45);
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (1,1,2,'Maida',50,2,'2023-11-13','Pending');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=1;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (2,1,12,'Noodles',20,2,'2023-11-13','Pending');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=2;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (3,1,16,'Dettol ',25,1,'2023-11-13','Pending');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=3;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (4,2,16,'Dettol ',25,2,'2023-11-01','Pending');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=4;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (5,1,25,'Chana dal',45,3,'2023-11-05','Pending');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=5;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (6,2,13,'Pasta',45,4,'2023-11-13','Pending');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=6;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (7,2,15,'Toothpaste',95,1,'2023-11-13','Pending');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=7;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (8,5,20,'Washing powder',55,2,'2023-11-13','Pending');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=8;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (9,10,23,'Jam',45,1,'2023-11-13','Pending');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=9;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (10,12,1,'Basmati rice',100,5,'2023-11-13','Pending');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=10;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (11,5,24,'Toor dal',40,2,'2023-11-13','Pending');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=11;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (12,1,4,'Tamarind',70,2,'2023-11-13','Pending');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=12;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (13,1,3,'Besan',60,2,'2023-10-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=13;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (14,1,5,'Red chilli',40,1,'2023-10-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=14;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (15,2,6,'Idli, dosa batter',45,2,'2023-10-01','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=15;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (16,1,7,'Bread packet',30,1,'2023-10-05','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=16;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (17,2,8,'Coconut oil',120,2,'2023-10-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=17;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (18,2,9,'Salt',35,3,'2023-10-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=18;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (19,5,10,'Ghee or butter',150,2,'2023-10-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=19;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (20,10,11,'Peanuts',80,3,'2023-10-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=20;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (21,12,12,'Noodles',20,5,'2023-10-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=21;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (22,5,13,'Pasta',45,2,'2023-10-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=22;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (23,1,14,'Milk',58,2,'2023-10-13','Pending');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=23;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (24,1,20,'Washing powder',55,2,'2023-10-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=24;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (25,1,23,'Jam',45,1,'2023-10-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=25;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (26,2,24,'Toor dal',40,2,'2023-10-01','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=26;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (27,1,25,'Chana dal',45,3,'2023-09-05','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=27;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (28,2,13,'Pasta',45,4,'2023-09-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=28;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (29,2,15,'Toothpaste',95,1,'2023-09-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=29;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (30,5,20,'Washing powder',55,2,'2023-09-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=30;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (31,10,23,'Jam',45,1,'2023-09-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=31;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (32,12,1,'Basmati rice',100,5,'2023-09-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=32;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (33,5,24,'Toor dal',40,2,'2023-09-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=33;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (34,3,14,'Milk',58,2,'2023-10-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=34;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (35,3,20,'Washing powder',55,2,'2023-10-13','Pending');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=35;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (36,3,23,'Jam',45,1,'2023-10-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=36;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (37,4,24,'Toor dal',40,2,'2023-10-01','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=37;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (38,4,25,'Chana dal',45,3,'2023-09-05','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=38;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (39,6,13,'Pasta',45,4,'2023-09-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=39;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (40,6,15,'Toothpaste',95,1,'2023-09-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=40;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (41,7,20,'Washing powder',55,2,'2023-09-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=41;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (42,8,23,'Jam',45,1,'2023-09-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=42;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (43,9,1,'Basmati rice',100,5,'2023-09-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=43;
+
+insert into BillDetails (BillID,Cus_ID,Prod_ID,Prod_Name,Prod_Price,Prod_Quantity,Date_of_Purchase,Payment) values (44,12,24,'Toor dal',40,2,'2023-09-13','Done');
+update BillDetails set Total_Price=Prod_Price*Prod_Quantity where BillID=44;
+
+select * from CustomerDetails;
+select * from ProductDetails;
+select * from BillDetails;
